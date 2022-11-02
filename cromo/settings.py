@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apicore.apps.ApicoreConfig',
+    'inv.apps.InvConfig',
     'rest_framework',
 ]
 
