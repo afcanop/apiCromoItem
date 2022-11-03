@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+  api:
+    container_name: api
+    build: .
+    ports:
+      - '8000:8000'
+    links:
+      - baseDatos
+
   baseDatos:
     container_name: baseDatos
     image: postgres:latest
@@ -12,6 +20,7 @@ services:
       - '5432:5432'
     volumes:
       - baseDatos:/var/lib/postgresql/data
+
 volumes:
   baseDatos:
     driver: local
