@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  baseDatos:
+    container_name: baseDatos
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=semantica
+      - POSTGRES_PASSWORD=semantica.2022
+    ports:
+      - '5432:5432'
+    volumes:
+      - baseDatos:/var/lib/postgresql/data
+volumes:
+  baseDatos:
+    driver: local
