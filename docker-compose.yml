@@ -7,20 +7,21 @@ services:
     ports:
       - '8000:8000'
     links:
-      - baseDatos
+      - postgresBaseDatos
 
-  baseDatos:
-    container_name: baseDatos
+  postgresBaseDatos:
+    container_name: postgresBaseDatos
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER=semantica
-      - POSTGRES_PASSWORD=semantica.2022
+      - POSTGRES_USER=${POSTGRESQL_USER}
+      - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     ports:
       - '5432:5432'
     volumes:
-      - baseDatos:/var/lib/postgresql/data
+      - postgresBaseDatos:/var/lib/postgresql/data
 
 volumes:
-  baseDatos:
+  postgresBaseDatos:
     driver: local
