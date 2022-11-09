@@ -79,7 +79,14 @@ WSGI_APPLICATION = 'cromo.wsgi.application'
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 DATABASES = {
-    "default": dj_database_url.parse(config('DATABASE_URL')),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('POSTGRESQL_NAME'),
+        'USER': config('POSTGRESQL_USER'),
+        'PASSWORD': config('POSTGRESQL_PASSWORD'),
+        'HOST': config('POSTGRESQL_HOST'),
+        'PORT': config('POSTGRESQL_PORT'),
+    }
 }
 
 # Password validation
@@ -115,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = 'app/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
