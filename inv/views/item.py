@@ -8,6 +8,8 @@ from inv.repository.itemRepository import itemRepository
 
 class ItemView(viewsets.ModelViewSet):
     serializer_class = itemSerializers
+
+
     permission_classes = [permissions.AllowAny]
 
     @action(detail=False, methods=['get'])
